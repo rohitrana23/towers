@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b7apmtabgyg06"]
+[gd_scene load_steps=36 format=3 uid="uid://b7apmtabgyg06"]
 
 [ext_resource type="Texture2D" uid="uid://ddvbbqgto7rto" path="res://assets/Towers.png" id="1_a5n4v"]
 [ext_resource type="Script" path="res://scripts/cannon.gd" id="2_2vver"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dsxi4ple5lvrq" path="res://assets/EnvironmentPack/Platforms/Under_Platform_Center.png" id="8_fxbn4"]
 [ext_resource type="Texture2D" uid="uid://bptlmfwx80wmv" path="res://assets/EnvironmentPack/Props/BackGround01.png" id="9_ppw6u"]
 [ext_resource type="Texture2D" uid="uid://b42phopcucycc" path="res://assets/EnvironmentPack/Props/Grave02.png" id="10_ku8ja"]
+[ext_resource type="Script" path="res://scripts/cannon2.gd" id="13_2m06l"]
 [ext_resource type="Texture2D" uid="uid://bl5dkjvde5mma" path="res://assets/lost_kingdom_3840x2160.png" id="16_xmmk6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jqm6g"]
@@ -158,7 +159,7 @@ sources/1 = SubResource("TileSetAtlasSource_am0xh")
 position = Vector2(-4, 26)
 
 [node name="cannon" type="CharacterBody2D" parent="."]
-position = Vector2(371, 951)
+position = Vector2(371, 962)
 scale = Vector2(6, 6)
 script = ExtResource("2_2vver")
 cannonball_scene = ExtResource("2_bsfh4")
@@ -182,7 +183,7 @@ shape = SubResource("RectangleShape2D_nars1")
 disabled = true
 
 [node name="Marker2D" type="Marker2D" parent="cannon"]
-position = Vector2(13, -4)
+position = Vector2(15, -4.5)
 
 [node name="Tower1" type="StaticBody2D" parent="."]
 position = Vector2(222, 852)
@@ -268,8 +269,50 @@ texture = ExtResource("10_ku8ja")
 
 [node name="LostKingdom3840x2160" type="Sprite2D" parent="."]
 z_index = -10
-position = Vector2(1050, 432)
+position = Vector2(932, 494)
 texture = ExtResource("16_xmmk6")
+
+[node name="cannon2" type="CharacterBody2D" parent="."]
+position = Vector2(1500, 962)
+scale = Vector2(-6, 6)
+script = ExtResource("13_2m06l")
+cannonball_scene = ExtResource("2_bsfh4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cannon2"]
+texture_filter = 1
+position = Vector2(3.83334, -3.20834)
+scale = Vector2(0.5, 0.46131)
+sprite_frames = SubResource("SpriteFrames_44lvl")
+
+[node name="Area2D" type="Area2D" parent="cannon2"]
+position = Vector2(-0.333336, -0.375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cannon2/Area2D"]
+position = Vector2(-1.50034, -4.5)
+shape = SubResource("RectangleShape2D_1bu84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cannon2"]
+position = Vector2(2.16633, -4.70834)
+shape = SubResource("RectangleShape2D_nars1")
+disabled = true
+
+[node name="Marker2D" type="Marker2D" parent="cannon2"]
+position = Vector2(15, -4.5)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1470, 950)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("CircleShape2D_itp2u")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D2"]
+texture_filter = 1
+position = Vector2(-2.00001, 2)
+scale = Vector2(1.65625, 1.26)
+sprite_frames = SubResource("SpriteFrames_4kg7r")
 
 [connection signal="body_entered" from="cannon/Area2D" to="cannon" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="cannon/Area2D" to="cannon" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="cannon2/Area2D" to="cannon2" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="cannon2/Area2D" to="cannon2" method="_on_area_2d_body_exited"]
