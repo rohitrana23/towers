@@ -1,0 +1,205 @@
+[gd_scene load_steps=26 format=3 uid="uid://b7apmtabgyg06"]
+
+[ext_resource type="Texture2D" uid="uid://ddvbbqgto7rto" path="res://assets/Towers.png" id="1_a5n4v"]
+[ext_resource type="Script" path="res://scripts/cannon.gd" id="2_2vver"]
+[ext_resource type="Texture2D" uid="uid://d4c2a6dwx2g1y" path="res://assets/Knight 2D Pixel Art/Sprites/with_outline/IDLE.png" id="2_3e8kw"]
+[ext_resource type="Script" path="res://scripts/player1.gd" id="2_7t2e6"]
+[ext_resource type="Texture2D" uid="uid://bt8i3w0jrqdg" path="res://assets/cannon_spritesheet.png" id="3_lcmnw"]
+[ext_resource type="Texture2D" uid="uid://d311qg2d0x0a0" path="res://assets/PNG/Other_objects.png" id="6_dgxsa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqm6g"]
+atlas = ExtResource("3_lcmnw")
+region = Rect2(0, 0, 40, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44lvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqm6g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bu84"]
+size = Vector2(11.6667, 14.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nars1"]
+size = Vector2(20, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bdvp"]
+size = Vector2(21.4035, 6.49122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_myj0p"]
+size = Vector2(21.0526, 4.57894)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgeqp"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a45w6"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(96, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wkvc"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(192, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffcop"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(288, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynn4a"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(384, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpb08"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(480, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_167m1"]
+atlas = ExtResource("2_3e8kw")
+region = Rect2(576, 0, 96, 84)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pban4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgeqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a45w6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wkvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffcop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynn4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpb08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_167m1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hben8"]
+radius = 9.33333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_72brv"]
+size = Vector2(1960, 80)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_itp2u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28314"]
+atlas = ExtResource("6_dgxsa")
+region = Rect2(32, 50, 32, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4kg7r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28314")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(-4, 26)
+
+[node name="cannon" type="CharacterBody2D" parent="."]
+position = Vector2(371, 951)
+scale = Vector2(6, 6)
+script = ExtResource("2_2vver")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="cannon"]
+position = Vector2(3.83334, -3.20834)
+scale = Vector2(0.5, 0.46131)
+sprite_frames = SubResource("SpriteFrames_44lvl")
+
+[node name="Area2D" type="Area2D" parent="cannon"]
+position = Vector2(-0.333336, -0.375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cannon/Area2D"]
+position = Vector2(-1.50034, -4.5)
+shape = SubResource("RectangleShape2D_1bu84")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cannon"]
+position = Vector2(2.16633, -4.70834)
+shape = SubResource("RectangleShape2D_nars1")
+disabled = true
+
+[node name="Tower1" type="StaticBody2D" parent="."]
+position = Vector2(222, 852)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tower1"]
+texture_filter = 1
+position = Vector2(0.333333, 0)
+texture = ExtResource("1_a5n4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower1"]
+position = Vector2(-0.701752, -4.47369)
+shape = SubResource("RectangleShape2D_6bdvp")
+one_way_collision = true
+
+[node name="Tower2" type="StaticBody2D" parent="."]
+position = Vector2(1665, 852)
+scale = Vector2(6, 6)
+
+[node name="Sprite2D" type="Sprite2D" parent="Tower2"]
+texture_filter = 1
+position = Vector2(0, -0.25)
+texture = ExtResource("1_a5n4v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tower2"]
+position = Vector2(-0.526306, -5.95615)
+shape = SubResource("RectangleShape2D_myj0p")
+one_way_collision = true
+
+[node name="player1" type="CharacterBody2D" parent="."]
+position = Vector2(459, 866)
+scale = Vector2(3, 3)
+script = ExtResource("2_7t2e6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player1"]
+texture_filter = 1
+position = Vector2(0, 0.333333)
+sprite_frames = SubResource("SpriteFrames_pban4")
+frame_progress = 0.389949
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player1"]
+position = Vector2(0.333333, 3.33333)
+shape = SubResource("CapsuleShape2D_hben8")
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2(967, 1018)
+shape = SubResource("RectangleShape2D_72brv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(396, 950)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_itp2u")
+disabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="StaticBody2D"]
+texture_filter = 1
+position = Vector2(-2.00001, 2)
+scale = Vector2(1.65625, 1.26)
+sprite_frames = SubResource("SpriteFrames_4kg7r")
+
+[connection signal="body_entered" from="cannon/Area2D" to="cannon" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="cannon/Area2D" to="cannon" method="_on_area_2d_body_exited"]
