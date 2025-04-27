@@ -25,7 +25,7 @@ func _physics_process(delta):
 				rotation_degrees = 0
 				rotating_up = true
 
-	if player_nearby and Input.is_action_just_pressed("fire") and can_fire:
+	if player_nearby and Input.is_action_just_pressed("rfire") and can_fire:
 		is_paused = true  # Pause rotation immediately
 		fire()
 
@@ -42,10 +42,10 @@ func fire():
 	is_paused = false  # Resume rotation after cooldown
 
 func _on_area_2d_body_entered(body):
-	if body.name == "player1":
+	if body.name == "player2":
 		player_nearby = true
 
 
 func _on_area_2d_body_exited(body):
-	if body.name == "player1":
+	if body.name == "player2":
 		player_nearby = false

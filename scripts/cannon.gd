@@ -2,18 +2,16 @@ extends CharacterBody2D
 
 @export var cannonball_scene: PackedScene
 @export var fire_cooldown: float = 1.0
-@export var rotate_speed: float = 60.0  # degrees per second
+@export var rotate_speed: float = 60.0
 var can_fire = true
 var player_nearby = false
-var rotating_up = true  # true = up, false = down
-var is_paused = false   # Whether rotation is paused
-
+var rotating_up = true
+var is_paused = false 
 @onready var bullet_spawn = $Marker2D
 @onready var sprite = $AnimatedSprite2D
 
 func _physics_process(delta):
 	if player_nearby and not is_paused:
-		# Rotate up or down between 0 and -90 degrees
 		if rotating_up:
 			rotation_degrees -= rotate_speed * delta
 			if rotation_degrees <= -90:
@@ -26,7 +24,7 @@ func _physics_process(delta):
 				rotating_up = true
 
 	if player_nearby and Input.is_action_just_pressed("fire") and can_fire:
-		is_paused = true  # Pause rotation immediately
+		is_paused = true
 		fire()
 
 func fire():
@@ -39,7 +37,7 @@ func fire():
 	can_fire = false
 	await get_tree().create_timer(fire_cooldown).timeout
 	can_fire = true
-	is_paused = false  # Resume rotation after cooldown
+	is_paused = false
 
 func _on_area_2d_body_entered(body):
 	if body.name == "player1":

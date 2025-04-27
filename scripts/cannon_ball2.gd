@@ -15,7 +15,5 @@ func _physics_process(delta):
 
 
 func _on_body_entered(body):
-	if body.name == "player2":
-		body.take_damage(7)
-	if body.name == "Tower2":
+	if body.name == "player1":
 		body.take_damage(7)

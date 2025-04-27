@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b45l1r545jn0o"]
+[gd_scene load_steps=4 format=3 uid="uid://d0mn7jtds5qsn"]
 
-[ext_resource type="Texture2D" uid="uid://cirxvogwwjerw" path="res://assets/Cañon_bala.png" id="1_2sc25"]
-[ext_resource type="Script" path="res://scripts/cannon_ball.gd" id="1_re82h"]
+[ext_resource type="Script" path="res://scripts/cannon_ball2.gd" id="1_6sfft"]
+[ext_resource type="Texture2D" uid="uid://cirxvogwwjerw" path="res://assets/Cañon_bala.png" id="2_bypa3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lmuhf"]
 
 [node name="Area2D" type="Area2D"]
-light_mask = 12
-visibility_layer = 12
+light_mask = 4
+visibility_layer = 4
 scale = Vector2(2, 2)
-collision_layer = 12
-collision_mask = 12
-script = ExtResource("1_re82h")
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_6sfft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
@@ -22,6 +22,6 @@ shape = SubResource("CircleShape2D_lmuhf")
 texture_filter = 1
 position = Vector2(-0.142238, 0.333333)
 scale = Vector2(0.144179, 0.152381)
-texture = ExtResource("1_2sc25")
+texture = ExtResource("2_bypa3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
